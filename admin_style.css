@@ -1,42 +1,48 @@
 
 :root {
-    --admin-bg: #f4f6f8;
-    --admin-text: #333;
-    --admin-primary: #6a0dad; 
-    --admin-primary-hover: #530082;
-    --admin-secondary: #6c757d;
-    --admin-success: #28a745;
-    --admin-danger: #dc3545;
-    --admin-warning: #ffc107;
-    --admin-light: #f8f9fa;
-    --admin-dark: #343a40;
-    --admin-border-color: #dee2e6;
-    --admin-header-bg: #343a40; 
-    --admin-header-text: #f8f9fa;
-    --admin-sidebar-bg: #ffffff;
+    --admin-bg: #1e202a; 
+    --admin-content-bg: #272936; 
+    --admin-header-bg: #272936; 
+    --admin-text-primary: #e0e6ed; 
+    --admin-text-secondary: #a0aec0; 
+    --admin-primary-color: #7c3aed; 
+    --admin-primary-hover: #6d28d9;
+    --admin-secondary-color: #4a5568; 
+    --admin-border-color: #3c3e4d; /
+    --admin-table-header-bg: #323441;
+    --admin-table-row-hover-bg: #383a49;
 
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --admin-success: #38a169; 
+    --admin-danger: #e53e3e;  
+    --admin-warning: #dd6b20; 
+
+    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: var(--font-sans-serif);
     background-color: var(--admin-bg);
-    color: var(--admin-text);
+    color: var(--admin-text-primary);
     margin: 0;
     font-size: 15px;
     line-height: 1.6;
 }
 
-.admin-header {
+
+.admin-top-header {
     background-color: var(--admin-header-bg);
-    color: var(--admin-header-text);
+    color: var(--admin-text-primary);
     padding: 12px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: sticky; 
-    top: 0;
-    z-index: 1020;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+   
 }
-.admin-header-container {
+.admin-top-header-container {
     width: 95%;
     max-width: 1400px;
     margin: 0 auto;
@@ -45,280 +51,413 @@ body {
     align-items: center;
 }
 .admin-logo a {
-    color: var(--admin-header-text);
+    color: var(--admin-text-primary);
     text-decoration: none;
     font-size: 1.4em;
-    font-weight: bold;
+    font-weight: 600; 
 }
 .admin-logo .logo-subtext {
     font-size: 0.7em;
-    color: #adb5bd;
+    color: var(--admin-text-secondary);
     font-weight: normal;
+    margin-left: 5px;
 }
-.admin-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-.admin-nav ul li a {
-    color: #ced4da;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.admin-nav ul li a:hover,
-.admin-nav ul li a.active {
-    background-color: rgba(255,255,255,0.1);
-    color: var(--admin-header-text);
-}
-.admin-user-actions {
+.admin-user-info {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-.admin-user-actions span {
-    color: #e9ecef;
+.admin-user-info span {
+    color: var(--admin-text-primary);
+}
+.admin-user-info .btn-outline-light {
+    color: var(--admin-text-primary);
+    border-color: var(--admin-text-secondary);
+    font-size: 0.85em;
+    padding: 0.3rem 0.6rem;
+}
+.admin-user-info .btn-outline-light:hover {
+    background-color: var(--admin-primary-color);
+    color: #fff;
+    border-color: var(--admin-primary-color);
+}
+
+.admin-main-wrapper {
+    padding: 20px; 
 }
 
 
-.admin-main-content {
-    padding: 25px 0;
-}
-.admin-container {
-    width: 95%;
-    max-width: 1400px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 25px;
+.page-content-wrapper {
+    background-color: var(--admin-content-bg);
+    padding: 20px 25px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-top: 15px; 
 }
 
 
-.page-header {
+.content-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--admin-border-color); 
+    margin-bottom: 25px;
+    margin-left: -25px; 
+    margin-right: -25px;
+    padding-left: 25px; 
+}
+.tab-item {
+    padding: 12px 18px; 
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--admin-text-secondary);
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px; 
+    transition: color 0.2s ease, border-color 0.2s ease;
+    font-size: 0.95em;
+}
+.tab-item:hover {
+    color: var(--admin-text-primary);
+}
+.tab-item.active {
+    color: var(--admin-primary-color);
+    border-bottom-color: var(--admin-primary-color);
+    font-weight: 600;
+}
+
+
+.page-title-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--admin-border-color);
 }
-.page-header h1 {
-    font-size: 1.8em;
+.page-title-bar h1 {
+    font-size: 1.8em; 
     margin: 0;
-    color: var(--admin-text);
+    color: var(--admin-text-primary);
+    font-weight: 600;
 }
-.header-actions {
+.page-title-bar .actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    align-items: center;
 }
 .search-input {
-    padding: 8px 12px;
+    padding: 9px 12px;
     border: 1px solid var(--admin-border-color);
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 0.9em;
+    background-color: var(--admin-bg);
+    color: var(--admin-text-primary);
+    min-width: 220px;
 }
-.back-link {
-    color: var(--admin-secondary);
-    text-decoration: none;
-    font-size: 1.1em;
-    margin-right: 15px;
+.search-input::placeholder {
+    color: var(--admin-text-secondary);
 }
-.back-link:hover {
-    color: var(--admin-primary);
-}
+
+
 .btn {
     display: inline-block;
-    font-weight: 400;
+    font-weight: 500; 
     text-align: center;
     vertical-align: middle;
     user-select: none;
     border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
+    padding: 0.5rem 1rem; 
     font-size: 0.9rem;
     line-height: 1.5;
-    border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: 6px; 
+    transition: all .15s ease-in-out;
     text-decoration: none;
     cursor: pointer;
 }
 .btn-primary {
     color: #fff;
-    background-color: var(--admin-primary);
-    border-color: var(--admin-primary);
+    background-color: var(--admin-primary-color);
+    border-color: var(--admin-primary-color);
 }
 .btn-primary:hover {
     background-color: var(--admin-primary-hover);
     border-color: var(--admin-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.7875rem;
-    border-radius: 0.2rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
 }
-.btn-lg {
-    padding: 0.5rem 1rem;
-    font-size: 1.125rem;
-    border-radius: 0.3rem;
+/* Styles pour les boutons Edit/Delete dans les tables */
+.data-table .btn-edit {
+    background-color: var(--admin-warning);
+    color: #fff; /* Texte blanc sur fond orange */
+    border-color: var(--admin-warning);
 }
-.btn-outline-light {
-    color: var(--admin-header-bg);
-    background-color: var(--admin-header-text);
-    border-color: var(--admin-header-text);
+.data-table .btn-edit:hover {
+    background-color: #c05621; /* Orange plus foncé */
+    border-color: #c05621;
 }
-.btn-outline-light:hover {
-    color: var(--admin-header-text);
-    background-color: rgba(52, 58, 64, 0.8);
-    border-color: rgba(52, 58, 64, 0.8);
-}
-.btn-outline-secondary {
-    color: var(--admin-secondary);
-    border-color: var(--admin-secondary);
-}
-.btn-outline-secondary:hover {
+.data-table .btn-delete {
+    background-color: var(--admin-danger);
     color: #fff;
-    background-color: var(--admin-secondary);
-}
-.btn-outline-danger {
-    color: var(--admin-danger);
     border-color: var(--admin-danger);
 }
-.btn-outline-danger:hover {
+.data-table .btn-delete:hover {
+    background-color: #c53030; /* Rouge plus foncé */
+    border-color: #c53030;
+}
+.data-table .btn-info { /* Pour le bouton "View Details" des inventaires */
+    background-color: #3182ce; /* Bleu */
     color: #fff;
-    background-color: var(--admin-danger);
+    border-color: #3182ce;
+}
+.data-table .btn-info:hover {
+    background-color: #2c5282; /* Bleu plus foncé */
+    border-color: #2c5282;
 }
 
-.content-table-wrapper {
-    overflow-x: auto; 
+
+/* --- Tableaux --- */
+.table-responsive {
+    overflow-x: auto;
 }
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1rem;
-    background-color: #fff;
+    margin-bottom: 1.5rem;
+    background-color: transparent; /* Table transparente sur le fond du content-bg */
+    color: var(--admin-text-primary);
 }
 .data-table th,
 .data-table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid var(--admin-border-color);
+    padding: 0.9rem 1rem; /* Padding uniforme */
+    vertical-align: middle;
+    border-bottom: 1px solid var(--admin-border-color); /* Seulement une bordure en bas */
     text-align: left;
 }
 .data-table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid var(--admin-border-color);
-    background-color: #e9ecef;
-    color: #495057;
+    border-bottom-width: 2px; /* Bordure plus épaisse pour l'en-tête */
+    border-bottom-color: var(--admin-secondary-color);
+    background-color: var(--admin-table-header-bg); /* Fond d'en-tête spécifique */
+    color: var(--admin-text-primary);
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
 }
 .data-table tbody tr:hover {
-    background-color: rgba(0,0,0,0.03);
+    background-color: var(--admin-table-row-hover-bg); /* Surlignage au survol */
 }
-.data-table td a.btn { margin-right: 5px; }
+.data-table td a, .data-table td button { margin-right: 6px; }
+.data-table td a:last-child, .data-table td button:last-child { margin-right: 0; }
+.data-table thead th a { /* Pour les liens de tri dans l'en-tête */
+    color: inherit;
+    text-decoration: none;
+}
+.data-table thead th a:hover {
+    color: var(--admin-primary-color);
+}
+
+/* --- Status Badges --- */
+.status-badge {
+    display: inline-block;
+    padding: .35em .65em; /* Un peu plus de padding */
+    font-size: 75%;
+    font-weight: 600; /* Un peu plus gras */
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle; /* Mieux aligné */
+    border-radius: .375rem; /* Plus arrondi */
+    color: #fff;
+    text-transform: capitalize;
+}
+.status-ok { background-color: var(--admin-success); }
+.status-warning { background-color: var(--admin-warning); }
+.status-critical { background-color: var(--admin-danger); }
+
+/* --- Formulaires (Général et dans les Modals) --- */
 .form-description {
     margin-bottom: 20px;
-    color: var(--admin-secondary);
+    color: var(--admin-text-secondary);
     font-size: 0.95em;
 }
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem; /* Espace standard */
 }
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 500; /* Moins gras */
+    color: var(--admin-text-secondary);
 }
 .form-control {
     display: block;
     width: 100%;
-    padding: 0.5rem 0.75rem;
+    padding: 0.6rem 0.85rem;
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: var(--admin-text-primary);
+    background-color: var(--admin-bg); /* Fond sombre pour les inputs */
     background-clip: padding-box;
     border: 1px solid var(--admin-border-color);
-    border-radius: 0.25rem;
+    border-radius: 6px;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .form-control:focus {
-    border-color: var(--admin-primary);
+    border-color: var(--admin-primary-color);
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(var(--admin-primary-color-rgb, 124, 58, 237), 0.25); /* Vous devrez définir --admin-primary-color-rgb si vous utilisez rgba avec une variable */
 }
-.form-control-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-    border-radius: 0.2rem;
+.form-control::placeholder {
+    color: var(--admin-text-secondary);
+    opacity: 0.7;
+}
+select.form-control { /* Pour que les selects aient le même look */
+    appearance: none; /* Supprimer l'apparence par défaut */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23a0aec0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem; /* Espace pour la flèche */
 }
 .form-actions {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     text-align: right;
+    padding-top: 1rem;
+    border-top: 1px solid var(--admin-border-color);
+}
+.form-actions .btn {
+    margin-left: 0.5rem;
 }
 
+/* --- Alertes --- */
+.alert {
+    position: relative;
+    padding: 0.85rem 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--admin-text-primary); /* Texte clair pour les alertes */
+}
+.alert-success { background-color: rgba(var(--admin-success-rgb, 56, 161, 105), 0.3); border-color: var(--admin-success); }
+.alert-danger { background-color: rgba(var(--admin-danger-rgb, 229, 62, 62), 0.3); border-color: var(--admin-danger); }
+.alert-warning { background-color: rgba(var(--admin-warning-rgb, 221, 107, 32), 0.3); border-color: var(--admin-warning); color: var(--admin-text-primary); }
+
+
+/* --- Modals --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(15, 17, 26, 0.8); /* Fond plus sombre et opaque */
+}
+.modal-content {
+    background-color: var(--admin-content-bg); /* Même fond que le contenu */
+    margin: 8% auto; /* Un peu moins d'espace en haut */
+    padding: 25px 30px;
+    border: 1px solid var(--admin-border-color);
+    width: 90%;
+    max-width: 550px; /* Un peu plus petit par défaut */
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    color: var(--admin-text-primary);
+}
+.close-modal {
+    color: var(--admin-text-secondary);
+    position: absolute; /* Positionnement absolu */
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+}
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--admin-text-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--admin-text-primary);
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--admin-border-color);
+    padding-bottom: 10px;
+}
+
+/* --- Inventaire Spécifique (Formulaire Nouvel Inventaire) --- */
+.inventory-form .form-group.inline-form-group label {
+    flex-basis: 180px; /* Donner une largeur fixe aux labels pour l'alignement */
+    flex-shrink: 0;
+    color: var(--admin-text-primary);
+}
 .inventory-category-group {
     margin-bottom: 2.5rem;
     padding: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--admin-border-color);
     border-radius: 6px;
-    background-color: #fdfdfd;
+    background-color: var(--admin-bg); /* Fond légèrement différent pour les groupes */
 }
 .inventory-category-group h2 {
     font-size: 1.3em;
-    color: var(--admin-primary);
-    margin-bottom: 15px;
+    color: var(--admin-primary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--admin-border-color);
 }
-.inventory-table td input[type="number"] {
-    max-width: 100px; 
+.inventory-table td input[type="number"].form-control-sm, /* Cible plus spécifique */
+.inventory-table td input[type="number"].new-count-input {
+    max-width: 90px;
     text-align: center;
+    background-color: #323441; /* Fond plus sombre pour les inputs dans la table */
+    border-color: #4a5568;
 }
-.stock-badge {
+.back-link { /* Style pour le lien "Retour aux inventaires" */
+    color: var(--admin-text-secondary);
+    text-decoration: none;
+    font-size: 0.9em;
     display: inline-block;
-    padding: .25em .6em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
+    margin-bottom: 5px; /* Espace avant le titre H1 */
+}
+.back-link:hover {
+    color: var(--admin-primary-color);
+}
+/* Ajustement si back-link est dans page-title-bar */
+.page-title-bar .back-link {
+    margin-bottom: 0;
+    margin-right: 15px;
+    align-self: center;
+}
+
+/* --- Footer --- */
+.admin-footer {
     text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;
-    margin-left: 5px;
-}
-.stock-critical {
-    color: #fff;
-    background-color: var(--admin-danger);
-}
-.alert {
-    position: relative;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-}
-.alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-}
-.alert-danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 0.85em;
+    color: var(--admin-text-secondary);
+    border-top: 1px solid var(--admin-border-color);
 }
 
-.text-center { text-align: center !important; }
 
+/* Responsive (simple) */
 @media (max-width: 768px) {
-    .admin-header-container { flex-direction: column; gap: 10px; }
+    .admin-top-header-container { flex-direction: column; gap: 10px; }
     .admin-nav ul { flex-wrap: wrap; justify-content: center; }
-    .page-header { flex-direction: column; gap: 15px; align-items: flex-start;}
-    .header-actions { width: 100%; }
-    .search-input { flex-grow: 1; }
+    .page-title-bar { flex-direction: column; gap: 15px; align-items: stretch;}
+    .page-title-bar .actions { flex-direction: column; }
+    .search-input { width: 100%; }
+    .content-tabs { font-size: 0.9em; padding-left: 15px; }
+    .tab-item { padding: 10px 12px; }
+    .modal-content { margin: 5% auto; width: 95%; }
 }
